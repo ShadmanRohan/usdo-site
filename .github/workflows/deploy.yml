@@ -5,17 +5,22 @@ on:
     branches: [main]
     paths-ignore:
       - "docs/**"
+      - "assets/**"
+      - "images/**"
+      - "README.md"
   workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -31,30 +36,12 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: |
-          npm run build
-          cp dist/index.vite.html dist/index.html 2>/dev/null || true
+        run: npm run build
 
-      - name: Commit root build (for Pages: main /root)
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html assets images .nojekyll
-          git diff --staged --quiet || git commit -m "chore: sync root Pages build [skip ci]"
-          git push
-
-      - name: Update docs folder (for Pages: main /docs)
-        run: |
-          rm -rf docs
-          cp -r dist docs
-
-      - name: Commit docs to main
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs
-          git diff --staged --quiet || git commit -m "chore: update GitHub Pages build [skip ci]"
-          git push
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
@@ -63,3 +50,14 @@ jobs:
           publish_dir: ./dist
           publish_branch: gh-pages
           force_orphan: true
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
