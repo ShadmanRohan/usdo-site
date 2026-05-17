@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+.env
+.env.*
+
+# Local assets / duplicates not needed in repo
+usdo-images/
+*.zip
+USDOHomepage.jsx
