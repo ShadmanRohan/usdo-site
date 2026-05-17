@@ -8,4 +8,4 @@ dist/
 # Local assets / duplicates not needed in repo
 usdo-images/
 *.zip
-USDOHomepage.jsx
+/USDOHomepage.jsx
