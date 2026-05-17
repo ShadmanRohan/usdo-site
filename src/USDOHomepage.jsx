@@ -16,6 +16,8 @@ const colors = {
   white: "#ffffff",
 };
 
+const img = (file) => `${import.meta.env.BASE_URL}images/${file}`;
+
 const fonts = `
   @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
 `;
@@ -1227,7 +1229,7 @@ const impactData = [
 
 const galleryPhotos = [
   {
-    src: "/images/community-garden.jpeg",
+    src: img("community-garden.jpeg"),
     graphic: false,
     titleEn: "Growing Together",
     titleBn: "একসাথে বৃদ্ধি",
@@ -1237,7 +1239,7 @@ const galleryPhotos = [
       "উত্তরণ পরিবারগুলোর সাথে বাগান গড়ে তোলা — মুন্সীগঞ্জে খাদ্য নিরাপত্তা ও পরিবেশগত স্থিতিস্থাপকতা।",
   },
   {
-    src: "/images/education-award.jpeg",
+    src: img("education-award.jpeg"),
     graphic: false,
     titleEn: "Celebrating Students",
     titleBn: "শিক্ষার্থীদের সম্মান",
@@ -1247,7 +1249,7 @@ const galleryPhotos = [
       "শ্রেণিকক্ষে সাফল্য উদযাপন — প্রতিটি শিশু প্রোৎসাহন ও সুযোগের যোগ্য।",
   },
   {
-    src: "/images/team-gathering.jpeg",
+    src: img("team-gathering.jpeg"),
     graphic: false,
     titleEn: "Our Community",
     titleBn: "আমাদের সম্প্রদায়",
@@ -1257,7 +1259,7 @@ const galleryPhotos = [
       "স্বেচ্ছাসেবক, অংশীদার ও নেতৃবৃন্দ একত্র — দুই দশকের তৃণমূল পরিবর্তনের মানুষগুলো।",
   },
   {
-    src: "/images/advocacy-rally.jpeg",
+    src: img("advocacy-rally.jpeg"),
     graphic: false,
     titleEn: "Voice for Change",
     titleBn: "পরিবর্তনের কণ্ঠ",
@@ -1267,7 +1269,7 @@ const galleryPhotos = [
       "অধিকার ও সমতা সম্পর্কে সচেতনতা — উত্তরণ সমাজের পাশে দাঁড়ায়।",
   },
   {
-    src: "/images/human-rights-paris.jpeg",
+    src: img("human-rights-paris.jpeg"),
     graphic: false,
     titleEn: "Human Rights on the World Stage",
     titleBn: "বিশ্বমঞ্চে মানবাধিকার",
@@ -1277,7 +1279,7 @@ const galleryPhotos = [
       "বিদেশে উত্তরণ প্রতিনিধি — বাংলাদেশি সম্প্রদায়কে মর্যাদা ও অধিকারের বৈশ্বিক সংলাপের সাথে যুক্ত করা।",
   },
   {
-    src: "/images/community-outreach.jpeg",
+    src: img("community-outreach.jpeg"),
     graphic: false,
     titleEn: "Reaching Every Doorstep",
     titleBn: "প্রতিটি ঘরে পৌঁছানো",
@@ -1287,7 +1289,7 @@ const galleryPhotos = [
       "কুরবানি থেকে পাড়া-পরিচয় — সহানুভূতি ও যত্ন নিয়ে পরিবারের কাছে পৌঁছানো।",
   },
   {
-    src: "/images/childrens-day-2023.jpeg",
+    src: img("childrens-day-2023.jpeg"),
     graphic: true,
     titleEn: "World Children's Day 2023",
     titleBn: "বিশ্ব শিশু দিবস ২০২৩",
@@ -1613,7 +1615,7 @@ export default function USDOHomepage() {
             <div className="hero-img-bg">
               <img
                 className="hero-photo"
-                src="/images/community-garden.jpeg"
+                src={img("community-garden.jpeg")}
                 alt={lang === "en" ? "USDO community members tending a shared garden" : "উত্তরণ সম্প্রদায়ের সদস্যরা যৌথ বাগানে কাজ করছেন"}
               />
             </div>
@@ -1694,7 +1696,7 @@ export default function USDOHomepage() {
                 <div className="prog-autism-badge">Opening Soon</div>
                 <div className="prog-featured-visual-inner">
                   <img
-                    src="/images/education-award.jpeg"
+                    src={img("education-award.jpeg")}
                     alt="USDO education program — student recognition ceremony"
                   />
                 </div>
@@ -1733,7 +1735,7 @@ export default function USDOHomepage() {
             <div className="spotlight-img-block">
               <img
                 className="spotlight-photo"
-                src="/images/community-outreach.jpeg"
+                src={img("community-outreach.jpeg")}
                 alt="USDO community outreach — meeting families across Bangladesh"
               />
               <div className="spotlight-img-caption">
