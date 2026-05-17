@@ -7,6 +7,7 @@ if (!builtHtml) {
 }
 
 cpSync(builtHtml, "index.html");
+cpSync(builtHtml, "dist/index.html");
 rmSync("assets", { recursive: true, force: true });
 rmSync("images", { recursive: true, force: true });
 cpSync("dist/assets", "assets", { recursive: true });

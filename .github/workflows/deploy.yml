@@ -31,7 +31,9 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: |
+          npm run build
+          cp dist/index.vite.html dist/index.html 2>/dev/null || true
 
       - name: Commit root build (for Pages: main /root)
         run: |
